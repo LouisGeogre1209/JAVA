@@ -1,0 +1,27 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font-family:Arial,sans-serif;max-width:420px;margin:30px auto;padding:0 12px}.box{border:1px solid #333;padding:16px}input,button{padding:6px;margin:4px 0}#kq{font-size:1.2em;margin-top:12px}</style><title>Kiểm tra năm nhuận</title></head><body><div class="box"><h2>Năm nhuận</h2>
+Năm: <input id="nam" type="number"><br>
+Tháng (1-12): <input id="thang" type="number"><br>
+<button id="btn">Kiểm tra</button><div id="kq"></div></div>
+<script>
+function laNhuan(y){return (y%400==0)||(y%4==0&&y%100!=0);}
+document.getElementById("btn").onclick=function(){
+  const y=parseInt(document.getElementById("nam").value);
+  const m=parseInt(document.getElementById("thang").value);
+  let s="";
+  if(isNaN(y)){document.getElementById("kq").textContent="Vui lòng nhập năm!";return;}
+  const nhuan=laNhuan(y);
+  s=y+(nhuan?": năm nhuận":": năm không nhuận");
+  if(!isNaN(m)){
+    let d;
+    switch(m){
+      case 1:case 3:case 5:case 7:case 8:case 10:case 12:d=31;break;
+      case 4:case 6:case 9:case 11:d=30;break;
+      case 2:d=nhuan?29:28;break;
+      default:d=null;
+    }
+    s+=d?". Tháng "+m+" có "+d+" ngày":". Tháng không hợp lệ";
+  }
+  document.getElementById("kq").textContent=s;
+  alert(s);
+};
+</script></body></html>

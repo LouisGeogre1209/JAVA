@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font-family:Arial,sans-serif;max-width:420px;margin:30px auto;padding:0 12px}.box{border:1px solid #333;padding:16px}input,button{padding:6px;margin:4px 0}#kq{font-size:1.2em;margin-top:12px}</style><title>Đổi năm dương sang âm lịch</title></head><body><div class="box"><h2>Năm âm lịch</h2>
+Năm dương lịch: <input id="nam" type="number"><br>
+<button id="btn">Đổi</button><div id="kq"></div></div>
+<script>
+document.getElementById("btn").onclick=function(){
+  const nam_duong_lich=parseInt(document.getElementById("nam").value);
+  if(isNaN(nam_duong_lich)){document.getElementById("kq").textContent="Vui lòng nhập năm!";return;}
+  let can,chi;
+  switch(nam_duong_lich%10){
+    case 0:can="Canh";break;case 1:can="Tân";break;case 2:can="Nhâm";break;
+    case 3:can="Quý";break;case 4:can="Giáp";break;case 5:can="Ất";break;
+    case 6:can="Bính";break;case 7:can="Đinh";break;case 8:can="Mậu";break;
+    case 9:can="Kỷ";break;
+  }
+  switch(nam_duong_lich%12){
+    case 0:chi="Thân";break;case 1:chi="Dậu";break;case 2:chi="Tuất";break;
+    case 3:chi="Hợi";break;case 4:chi="Tý";break;case 5:chi="Sửu";break;
+    case 6:chi="Dần";break;case 7:chi="Mẹo";break;case 8:chi="Thìn";break;
+    case 9:chi="Tỵ";break;case 10:chi="Ngọ";break;case 11:chi="Mùi";break;
+  }
+  document.getElementById("kq").textContent=nam_duong_lich+" là năm "+can+" "+chi;
+};
+</script></body></html>

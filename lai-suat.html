@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font-family:Arial,sans-serif;max-width:420px;margin:30px auto;padding:0 12px}.box{border:1px solid #333;padding:16px}input,button{padding:6px;margin:4px 0}#kq{font-size:1.2em;margin-top:12px}</style><title>Tính lãi suất ngân hàng</title></head><body><div class="box"><h2>Tính lãi đơn</h2>
+Số tiền vay (triệu đồng): <input id="tien" type="number"><br>
+Lãi suất (%/năm): <input id="lai" type="number"><br>
+Số năm (n): <input id="nam" type="number"><br>
+<button id="btn">Tính</button><div id="kq"></div></div>
+<script>
+document.getElementById("btn").onclick=function(){
+  const p=parseFloat(document.getElementById("tien").value);
+  const r=parseFloat(document.getElementById("lai").value);
+  const n=parseInt(document.getElementById("nam").value);
+  if(isNaN(p)||isNaN(r)||isNaN(n)){document.getElementById("kq").textContent="Vui lòng nhập đủ số liệu!";return;}
+  const laiMoiNam=p*r/100;
+  const tong=p+n*laiMoiNam;
+  document.getElementById("kq").textContent="Sau "+n+" năm phải trả: "+tong+" triệu đồng (lãi mỗi năm: "+laiMoiNam+")";
+};
+</script></body></html>
